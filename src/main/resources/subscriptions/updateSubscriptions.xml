@@ -175,11 +175,23 @@
                 mc.setPayloadJSON(payload);
             ]]>
         </script>
-        <call>
-            <endpoint>
-                <http method="PUT"
-                      uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/subscriptions/{uri.var.zuora.subscriptionKey}"/>
-            </endpoint>
-        </call>
+        <filter source="$ctx:zuoraBlocking" regex="true">
+            <then>
+                <call blocking="true">
+                    <endpoint>
+                        <http method="PUT"
+                              uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/subscriptions/{uri.var.zuora.subscriptionKey}"/>
+                    </endpoint>
+                </call>
+            </then>
+            <else>
+                <call>
+                    <endpoint>
+                        <http method="PUT"
+                              uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/subscriptions/{uri.var.zuora.subscriptionKey}"/>
+                    </endpoint>
+                </call>
+            </else>
+        </filter>
     </sequence>
 </template>

@@ -20,11 +20,23 @@
     <parameter name="accountKey" description="The account number or account ID "/>
     <sequence>
         <property name="uri.var.zuora.accountKey" expression="$func:accountKey"/>
-        <call>
-            <endpoint>
-                <http method="GET"
-                      uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/accounts/{uri.var.zuora.accountKey}/summary"/>
-            </endpoint>
-        </call>
+        <filter source="$ctx:zuoraBlocking" regex="true">
+            <then>
+                <call>
+                    <endpoint>
+                        <http method="GET"
+                              uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/accounts/{uri.var.zuora.accountKey}/summary"/>
+                    </endpoint>
+                </call>
+            </then>
+            <else>
+                <call>
+                    <endpoint>
+                        <http method="GET"
+                              uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/accounts/{uri.var.zuora.accountKey}/summary"/>
+                    </endpoint>
+                </call>
+            </else>
+        </filter>
     </sequence>
 </template>
