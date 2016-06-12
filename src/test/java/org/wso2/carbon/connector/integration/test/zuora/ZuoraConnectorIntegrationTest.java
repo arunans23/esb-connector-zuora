@@ -41,7 +41,7 @@ public class ZuoraConnectorIntegrationTest extends ConnectorIntegrationTestBase 
      */
     @BeforeClass(alwaysRun = true)
     public void setEnvironment() throws Exception {
-        init("zuora-connector-1.0.1");
+        init("zuora-connector-1.0.2-SNAPSHOT");
 
         esbRequestHeadersMap.put("Accept-Charset", "UTF-8");
         esbRequestHeadersMap.put("Content-Type", "application/json");
