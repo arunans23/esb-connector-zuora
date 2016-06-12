@@ -26,11 +26,23 @@
             <args/>
         </payloadFactory>
         <property name="FORCE_POST_PUT_NOBODY" value="true" scope="axis2" type="BOOLEAN"/>
-        <call>
-            <endpoint>
-                <http method="POST"
-                      uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/connections"/>
-            </endpoint>
-        </call>
+        <filter source="$ctx:zuoraBlocking" regex="true">
+            <then>
+                <call blocking="true">
+                    <endpoint>
+                        <http method="POST"
+                              uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/connections"/>
+                    </endpoint>
+                </call>
+            </then>
+            <else>
+                <call>
+                    <endpoint>
+                        <http method="POST"
+                              uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/connections"/>
+                    </endpoint>
+                </call>
+            </else>
+        </filter>
     </sequence>
 </template>

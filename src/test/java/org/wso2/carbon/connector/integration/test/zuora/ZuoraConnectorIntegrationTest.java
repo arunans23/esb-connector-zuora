@@ -822,7 +822,7 @@ public class ZuoraConnectorIntegrationTest extends ConnectorIntegrationTestBase 
      */
     @Test(enabled = true, description = "zuora {deletePayments} integration test with negative case ")
     public void testDeletePaymentNegativeCase() throws IOException, JSONException {
-        esbRequestHeadersMap.put("Action", "urn:deletePayments");
+        esbRequestHeadersMap.put("Action", "urn:deletePaymentsNegative");
 
         RestResponse<JSONObject> esbRestResponse =
                 sendJsonRestRequest(proxyUrl, "POST", esbRequestHeadersMap,

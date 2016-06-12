@@ -122,11 +122,9 @@ under the License.
                         <termType>{$ctx:termType}</termType>
                         <contractEffectiveDate>{$ctx:contractEffectiveDate}</contractEffectiveDate>
                         <subscribeToRatePlans>{$ctx:subscribeToRatePlans}</subscribeToRatePlans>
-                        <invoiceOwnerAccountKey>{$ctx:invoiceOwnerAccountKey}
-                        </invoiceOwnerAccountKey>
+                        <invoiceOwnerAccountKey>{$ctx:invoiceOwnerAccountKey}</invoiceOwnerAccountKey>
                         <serviceActivationDate>{$ctx:serviceActivationDate}</serviceActivationDate>
-                        <customerAcceptanceDate>{$ctx:customerAcceptanceDate}
-                        </customerAcceptanceDate>
+                        <customerAcceptanceDate>{$ctx:customerAcceptanceDate}</customerAcceptanceDate>
                         <termStartDate>{$ctx:termStartDate}</termStartDate>
                         <initialTerm>{$ctx:initialTerm}</initialTerm>
                         <initialTermPeriodType>{$ctx:initialTermPeriodType}</initialTermPeriodType>
@@ -135,8 +133,7 @@ under the License.
                         <invoiceTargetDate>{$ctx:invoiceTargetDate}</invoiceTargetDate>
                         <invoiceSeparately>{$ctx:invoiceSeparately}</invoiceSeparately>
                         <previewType>{$ctx:previewType}</previewType>
-                        <includeExistingDraftInvoiceItems>{$ctx:includeExistingDraftInvoiceItems}
-                        </includeExistingDraftInvoiceItems>
+                        <includeExistingDraftInvoiceItems>{$ctx:includeExistingDraftInvoiceItems}</includeExistingDraftInvoiceItems>
                         <renewalTerm>{$ctx:renewalTerm}</renewalTerm>
                         <autoRenew>{$ctx:autoRenew}</autoRenew>
                     </zuora.createSubscription>
@@ -147,11 +144,9 @@ under the License.
                         <termType>{$ctx:termType}</termType>
                         <contractEffectiveDate>{$ctx:contractEffectiveDate}</contractEffectiveDate>
                         <subscribeToRatePlans>{$ctx:subscribeToRatePlans}</subscribeToRatePlans>
-                        <invoiceOwnerAccountKey>{$ctx:invoiceOwnerAccountKey}
-                        </invoiceOwnerAccountKey>
+                        <invoiceOwnerAccountKey>{$ctx:invoiceOwnerAccountKey}</invoiceOwnerAccountKey>
                         <serviceActivationDate>{$ctx:serviceActivationDate}</serviceActivationDate>
-                        <customerAcceptanceDate>{$ctx:customerAcceptanceDate}
-                        </customerAcceptanceDate>
+                        <customerAcceptanceDate>{$ctx:customerAcceptanceDate}</customerAcceptanceDate>
                         <termStartDate>{$ctx:termStartDate}</termStartDate>
                         <initialTerm>{$ctx:initialTerm}</initialTerm>
                         <initialTermPeriodType>{$ctx:initialTermPeriodType}</initialTermPeriodType>
@@ -160,8 +155,7 @@ under the License.
                         <invoiceTargetDate>{$ctx:invoiceTargetDate}</invoiceTargetDate>
                         <invoiceSeparately>{$ctx:invoiceSeparately}</invoiceSeparately>
                         <previewType>{$ctx:previewType}</previewType>
-                        <includeExistingDraftInvoiceItems>{$ctx:includeExistingDraftInvoiceItems}
-                        </includeExistingDraftInvoiceItems>
+                        <includeExistingDraftInvoiceItems>{$ctx:includeExistingDraftInvoiceItems}</includeExistingDraftInvoiceItems>
                     </zuora.previewSubscription>
                 </case>
                 <case regex="urn:renewSubscriptions">
@@ -187,8 +181,7 @@ under the License.
                         <invoiceSeparately>{$ctx:invoiceSeparately}</invoiceSeparately>
                         <previewType>{$ctx:previewType}</previewType>
                         <subscriptionKey>{$ctx:subscriptionKey}</subscriptionKey>
-                        <includeExistingDraftInvoiceItems>{$ctx:includeExistingDraftInvoiceItems}
-                        </includeExistingDraftInvoiceItems>
+                        <includeExistingDraftInvoiceItems>{$ctx:includeExistingDraftInvoiceItems}</includeExistingDraftInvoiceItems>
                         <currentTerm>{$ctx:currentTerm}</currentTerm>
                         <currentTermPeriodType>{$ctx:currentTermPeriodType}</currentTermPeriodType>
                         <update>{$ctx:update}</update>
@@ -245,6 +238,12 @@ under the License.
                     <zuora.deletePayments>
                         <paymentMethodId>{$ctx:paymentMethodId}</paymentMethodId>
                     </zuora.deletePayments>
+                </case>
+                <case regex="urn:deletePaymentsNegative">
+                    <zuora.deletePayments>
+                        <paymentMethodId>{$ctx:paymentMethodId}</paymentMethodId>
+                    </zuora.deletePayments>
+                    <property name="messageType" value="text/xml" scope="axis2"/>
                 </case>
                 <case regex="urn:createPayments">
                     <zuora.createPayments>

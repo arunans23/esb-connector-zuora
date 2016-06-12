@@ -32,11 +32,23 @@
             mc.setProperty('uri.var.zuora.urlQuery', urlQuery);
          ]]>
         </script>
-        <call>
-            <endpoint>
-                <http method="GET"
-                      uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/transactions/invoices/accounts/{uri.var.zuora.accountKey}{+uri.var.zuora.urlQuery}"/>
-            </endpoint>
-        </call>
+        <filter source="$ctx:zuoraBlocking" regex="true">
+            <then>
+                <call blocking="true">
+                    <endpoint>
+                        <http method="GET"
+                              uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/transactions/invoices/accounts/{uri.var.zuora.accountKey}{+uri.var.zuora.urlQuery}"/>
+                    </endpoint>
+                </call>
+            </then>
+            <else>
+                <call>
+                    <endpoint>
+                        <http method="GET"
+                              uri-template="{uri.var.zuora.apiUrl}/{uri.var.zuora.apiVersion}/transactions/invoices/accounts/{uri.var.zuora.accountKey}{+uri.var.zuora.urlQuery}"/>
+                    </endpoint>
+                </call>
+            </else>
+        </filter>
     </sequence>
 </template>

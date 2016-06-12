@@ -21,6 +21,7 @@
     <parameter name="apiVersion" description="Version of the Zuora API"/>
     <parameter name="apiAccessKeyId" description="The account username of Zuora"/>
     <parameter name="apiSecretAccessKey" description="The account password of the Zuora"/>
+    <parameter name="blocking" description="Set to true to perform the blocking invocations to Zuora."/>
     <sequence>
         <property name="uri.var.zuora.apiUrl" expression="$func:apiUrl"/>
         <property name="uri.var.zuora.apiVersion" expression="$func:apiVersion"/>
@@ -28,6 +29,7 @@
         <property name="uri.var.zuora.apiSecretAccessKey" expression="$func:apiSecretAccessKey"/>
         <property name="zuora.basicHeader"
                   expression="fn:concat(get-property('uri.var.zuora.apiAccessKeyId'),':', get-property('uri.var.zuora.apiSecretAccessKey'))"/>
+        <property name="zuoraBlocking" expression="$func:blocking"/>
         <header name="Authorization"
                 expression="fn:concat('Basic ',base64Encode(get-property('zuora.basicHeader')))"
                 scope="transport"/>
